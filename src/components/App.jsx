@@ -59,32 +59,20 @@ class App extends React.Component {
     return filterContact;
   };
 
- 
-  componentDidUpdate(prevState) {
-    if (this.state !== prevState) {
-      localStorage.setItem('phone-list', JSON.stringify(this.state.contacts));
-    }
-  }
-
-  componentDidMount() {
-      const phoneList = localStorage.getItem('phone-list');
-      const parsePhoneList = JSON.parse(phoneList);
-      if(parsePhoneList){
-        this.setState({contacts: parsePhoneList})
-      }
-
-      
-  }
-
   render() {
     return (
       <>
       <h1>Phonebook</h1>
-        <Phonebook onAddContacs={this.addContacts} />
+        <Phonebook
+          onAddContacs={this.addContacts}
+        />
         {this.state.contacts.length !== 0 && (
           <>
             <h2>Contacts :</h2>
-            <PhonebookFilter onChange={this.filterChange} value={this.state.filter} />
+            <PhonebookFilter
+              onChange={this.filterChange}
+              value={this.state.filter}
+            />
             <PhonebookList
               items={this.getFilter()}
               onRemove={this.removeContact}
