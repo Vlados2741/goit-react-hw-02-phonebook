@@ -58,20 +58,6 @@ class App extends React.Component {
     });
     return filterContact;
   };
-
-  componentDidUpdate(prevState) {
-    if (this.state !== prevState) {
-      localStorage.setItem('phone-list', JSON.stringify(this.state.contacts));
-    }
-  }
-
-  componentDidMount() {
-    const phoneList = localStorage.getItem('phone-list');
-    const parsePhoneList = JSON.parse(phoneList);
-    if (parsePhoneList) {
-      this.setState({ contacts: parsePhoneList })
-    }
-  };
   
   render() {
     return (
