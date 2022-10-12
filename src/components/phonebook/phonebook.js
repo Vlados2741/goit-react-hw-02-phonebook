@@ -15,7 +15,7 @@ export class Phonebook extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
-    this.props.onAddContacs({ name, number });
+    this.props.onAddContact({ name, number });
     this.setState({
       name: '',
       number: '',

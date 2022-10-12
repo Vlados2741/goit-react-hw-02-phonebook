@@ -12,14 +12,14 @@ class App extends React.Component {
     filter: '',
   };
 
-  isDublicate = ({ name }) => {
+  dublicateFinder = ({ name }) => {
     const { contacts } = this.state;
     const result = contacts.find(item => item.name === name);
     return result;
   };
 
-  addContacts = data => {
-    if (this.isDublicate(data)) {
+  addContact = data => {
+    if (this.dublicateFinder(data)) {
       return alert(`${data.name} уже существует в списке контактов 🤪 `);
     }
     this.setState(prevState => {
@@ -40,20 +40,18 @@ class App extends React.Component {
     });
   };
 
-  filterChange = evt => {
+  handlefilter = evt => {
     const { name, value } = evt.currentTarget;
     this.setState({ [name]: value });
   };
 
-  getFilter = () => {
+  filterOption = () => {
     const { contacts, filter } = this.state;
     if (!filter) {
       return contacts;
     }
-    const normalaizedFilter = filter.toLowerCase();
     const filterContact = contacts.filter(({ name }) => {
-      const normalaizedName = name.toLowerCase();
-      const result = normalaizedName.includes(normalaizedFilter);
+      const result = name.toLowerCase().includes(filter.toLowerCase());
       return result;
     });
     return filterContact;
@@ -64,18 +62,18 @@ class App extends React.Component {
       <>
       <h1>Phonebook</h1>
         <Phonebook
-          onAddContacs={this.addContacts}
+          onAddContact={this.addContact}
         />
         {this.state.contacts.length !== 0 && (
           <>
             <h2>Contacts :</h2>
             <PhonebookFilter
-              onChange={this.filterChange}
+              onFilter={this.handlefilter}
               value={this.state.filter}
             />
             <PhonebookList
-              items={this.getFilter()}
-              onRemove={this.removeContact}
+              list={this.filterOption()}
+              onContactRemover={this.removeContact}
             />
           </>
         )}

@@ -1,12 +1,12 @@
-export const PhonebookList = ({ items, onRemove }) => {
-  const itemList = items.map(({ id, name, number }) => {
+export const PhonebookList = ({ list, onContactRemover }) => {
+  const itemList = list.map(({ id, name, number }) => {
     return (
       <li key={id} className="list-item">
         {name}: {number}
         <button
           className="delete-btn"
           type="button"
-          onClick={() => onRemove(id)}
+          onClick={() => onContactRemover(id)}
         >
           Delete
         </button>

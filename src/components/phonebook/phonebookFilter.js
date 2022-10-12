@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 
 const filterId = nanoid(5);
 
-export const PhonebookFilter = ({ onChange, value }) => {
+export const PhonebookFilter = ({ onFilter, value }) => {
   return (
     <form className="phonebook__form">
       <label htmlFor={filterId}>Find contacts by name</label>
@@ -12,7 +12,7 @@ export const PhonebookFilter = ({ onChange, value }) => {
         type="text"
         name="filter"
         value={value}
-        onChange={onChange}
+        onChange={onFilter}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         required
       />
