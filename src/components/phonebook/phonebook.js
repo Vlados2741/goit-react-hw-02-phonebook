@@ -51,9 +51,7 @@ export class Phonebook extends React.Component {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        <button type="submit">
-          Add contact
-        </button>
+        <button type="submit">Add contact</button>
       </form>
     );
   }

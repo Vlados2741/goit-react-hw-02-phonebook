@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
 import { nanoid } from 'nanoid';
-import { Phonebook } from "./phonebook/phonebook";
-import {PhonebookFilter} from './phonebook/phonebookFilter';
-import {PhonebookList} from './phonebook/phonebookList';
+import { Phonebook } from './phonebook/phonebook';
+import { PhonebookFilter } from './phonebook/phonebookFilter';
+import { PhonebookList } from './phonebook/phonebookList';
 import './phonebook/phonebook-style.css';
-
 
 class App extends React.Component {
   state = {
@@ -56,14 +55,12 @@ class App extends React.Component {
     });
     return filterContact;
   };
-  
+
   render() {
     return (
       <>
-      <h1>Phonebook</h1>
-        <Phonebook
-          onAddContact={this.addContact}
-        />
+        <h1>Phonebook</h1>
+        <Phonebook onAddContact={this.addContact} />
         {this.state.contacts.length !== 0 && (
           <>
             <h2>Contacts :</h2>
@@ -82,4 +79,4 @@ class App extends React.Component {
   }
 }
 
-export {App}
+export { App };
